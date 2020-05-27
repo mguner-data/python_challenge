@@ -53,19 +53,16 @@ print("------------------------")
 print(f'Winner : {candidate_name[index_max_val]}')
 print("------------------------")
 
-# Specify the file to write_to
-output_path = os.path.join('Analysis', 'election_results.csv')
+# Write output to txt file
+output_path = open('Analysis/election_results.txt', 'w')
 
-# Write output to csv file
-with open(output_path, 'w') as csvfile:
-
-    # Initialize csv.writer
-    csvwriter = csv.writer(csvfile, delimiter=',')
-
-    csvwriter.writerow(['Election Results'])
-    csvwriter.writerow([f'Total votes : {vote_counter}'])
-    for i in range(len(candidate_name)):
-        csvwriter.writerow ([f' {candidate_name[i]} : {round(((vote_count[i])*100/(vote_counter)),3)} % ({vote_count[i]}) '])
-    csvwriter.writerow([f'Winner: {candidate_name[index_max_val]}'])
+output_path.write('Election Results \n')
+output_path.write(f'Total votes : {vote_counter} \n')
+for i in range(len(candidate_name)):
+    output_path.write(f'{candidate_name[i]} : {round(((vote_count[i])*100/(vote_counter)),3)} % ({vote_count[i]}) \n')  
+output_path.write(f'Winner: {candidate_name[index_max_val]} \n') 
+    
+output_path.close()
+ 
 
     

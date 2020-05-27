@@ -50,21 +50,17 @@ print(f'Average Change : $ {average_change}')
 print(f'Greatest Increase in Profits : {new_list_months[index_max+1]} (${max_val})')
 print(f'Greatest Decrease in Profits : {new_list_months[index_min+1]} (${min_val})')
 
-# Specify the file to write_to
-output_path = os.path.join('Analysis', 'financial_analysis.csv')
+# Write output to txt file
+output_path = open('Analysis/financial_analysis.txt', 'w')
 
-# Write output to csv file
-with open(output_path, 'w') as csvfile:
-
-    # Initialize csv.writer
-    csvwriter = csv.writer(csvfile, delimiter=',')
-
-    csvwriter.writerow(['Financial Analysis'])
-    csvwriter.writerow([f'Total Months : {n}'])
-    csvwriter.writerow([f'Total : $ {net_total_profit}'])  
-    csvwriter.writerow([f'Average Change : $ {average_change}'])
-    csvwriter.writerow([f'Greatest Increase in Profits : {new_list_months[index_max+1]} (${max_val})'])
-    csvwriter.writerow([f'Greatest Decrease in Profits : {new_list_months[index_min+1]} (${min_val})'])
+output_path.write('Financial Analysis \n')
+output_path.write(f'Total Months : {n} \n')
+output_path.write(f'Total : $ {net_total_profit} \n')  
+output_path.write(f'Average Change : $ {average_change} \n')
+output_path.write(f'Greatest Increase in Profits : {new_list_months[index_max+1]} (${max_val}) \n')
+output_path.write(f'Greatest Decrease in Profits : {new_list_months[index_min+1]} (${min_val}) \n')
+    
+output_path.close()
     
 
 
